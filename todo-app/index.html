@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div>
+                    <h1>Todo</h1>
+                    <p class="subtitle">管理你的任务清单</p>
+                </div>
+                <button id="theme-toggle" class="theme-btn" title="切换主题">🌙</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- 输入区域 -->
+            <form id="todo-form" class="input-group">
+                <select id="category-select" class="category-select">
+                    <option value="工作">💼 工作</option>
+                    <option value="学习">📚 学习</option>
+                    <option value="个人">❤️ 个人</option>
+                    <option value="其他" selected>📌 其他</option>
+                </select>
+                <input
+                    type="text"
+                    id="todo-input"
+                    placeholder="添加一个新任务..."
+                    autocomplete="off"
+                    required
+                />
+                <button type="submit" id="add-btn">添加</button>
+            </form>
+
+            <!-- 工具栏 -->
+            <div class="toolbar">
+                <div class="toolbar-row">
+                    <span id="item-count">0 项待办</span>
+                    <div class="toolbar-actions">
+                        <button id="export-btn" class="icon-btn" title="导出数据">⬇</button>
+                        <button id="import-btn" class="icon-btn" title="导入数据">⬆</button>
+                    </div>
+                </div>
+                <div class="toolbar-row">
+                    <input type="text" id="search-input" placeholder="🔍 搜索任务..." class="search-input" />
+                </div>
+                <div class="toolbar-row">
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">全部</button>
+                        <button class="filter-btn" data-filter="active">未完成</button>
+                        <button class="filter-btn" data-filter="completed">已完成</button>
+                    </div>
+                    <div class="category-filters" id="category-filters">
+                        <button class="cat-filter active" data-cat="all">全部</button>
+                        <button class="cat-filter" data-cat="工作">💼 工作</button>
+                        <button class="cat-filter" data-cat="学习">📚 学习</button>
+                        <button class="cat-filter" data-cat="个人">❤️ 个人</button>
+                        <button class="cat-filter" data-cat="其他">📌 其他</button>
+                    </div>
+                </div>
+                <div class="toolbar-row">
+                    <button id="clear-completed" class="clear-btn">清除已完成</button>
+                </div>
+            </div>
+
+            <!-- 列表 -->
+            <ul id="todo-list"></ul>
+
+            <!-- 空状态 -->
+            <div id="empty-state" class="empty-state">
+                <span class="empty-icon">📋</span>
+                <p>暂无任务，添加一个吧！</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>双击任务可编辑 · 拖拽可排序 · 点击复选框标记完成</p>
+        </footer>
+    </div>
+
+    <input type="file" id="file-input" accept=".json" style="display:none" />
+    <script src="script.js"></script>
+</body>
+</html>
